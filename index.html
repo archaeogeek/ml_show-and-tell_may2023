@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Making Metadata Great Again</title>
+
+		<meta name="description" content="A show and tell for Astun May 2023">
+		<meta name="author" content="Astun Technology">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		
+		<!-- base theme -->
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- all Astun customisations -->
+		<link rel="stylesheet" href="custom/astun.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3 style="color:var(--astun-indigo)">Making Metadata Great Again</h3>
+					<p>A show and tell for Astun colleagues, May 2023 by Jo and Elena</p>
+					<img src="./images/trump.jpg" style="height:200px"/>
+					<aside class="notes">Wikimedia commons CC-BY-SA 4.0</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-red)">Background</h3>
+					<p style="color:var(--astun-red)">Why are we doing this?</p>
+					<aside class="notes">We have a need to make it much easier for people to create metadata in bulk for thousands of datasets at once. Crawler gets us part of the way there, but only part of the way. This hopefully gets us all the way!</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-red)">Metadata needed for compliance</h3>
+				</section>
+
+				<section data-auto-animate>
+					<div class="twocolumn">
+						<div>
+							<ul>
+								<li>Abstract</li>
+								<li>Alternative Title</li>
+								<li>Bounding Box</li>
+								<li>Constraints (usage and licensing)</li>
+								<li>Contact Details</li>
+								<li>Date</li>
+								<li>Extent Keyword</li>
+								<li>Keywords (Controlled and Free Text)</li>
+							</ul>
+						</div>
+						<div>
+							<ul>
+								<li>Lineage</li>
+								<li>Spatial Reference System</li>
+								<li>Resolution</li>
+								<li>Temporal Extent</li>
+								<li>Title</li>
+								<li>Topic Category (controlled)</li>
+								<li>Update Frequency</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate>
+					<div class="twocolumn">
+						<div>
+							<ul>
+								<li>Abstract</li>
+								<li>Alternative Title</li>
+								<li><del>Bounding Box</del></li>
+								<li>Constraints (usage and licensing)</li>
+								<li>Contact Details</li>
+								<li><del>Date</del></li>
+								<li>Extent Keyword</li>
+								<li>Keywords (Controlled and Free Text)</li>
+							</ul>
+						</div>
+						<div>
+							<ul>
+								<li>Lineage</li>
+								<li><del>Spatial Reference System</del></li>
+								<li>Resolution</li>
+								<li>Temporal Extent</li>
+								<li><del>Title</del></li>
+								<li>Topic Category (controlled)</li>
+								<li>Update Frequency</li>
+							</ul>
+						</div>
+					</div>
+					<aside class="notes">Things we can calculate with crawler</aside>
+				</section>
+
+				<section data-auto-animate>
+					<div class="twocolumn">
+						<div>
+							<ul>
+								<li>Abstract</li>
+								<li>Alternative Title</li>
+								<li><del>Bounding Box</del></li>
+								<li><del>Constraints (usage and licensing)</del></li>
+								<li><del>Contact Details</del></li>
+								<li><del>Date</del></li>
+								<li>Extent Keyword</li>
+								<li>Keywords (Controlled and Free Text)</li>
+							</ul>
+						</div>
+						<div>
+							<ul>
+								<li><del>Lineage</del></li>
+								<li><del>Spatial Reference System</del></li>
+								<li><del>Resolution</del></li>
+								<li><del>Temporal Extent</del></li>
+								<li><del>Title</del></li>
+								<li>Topic Category (controlled)</li>
+								<li><del>Update Frequency</del></li>
+							</ul>
+						</div>
+					</div>
+					<aside class="notes">Things we can add with placeholder text</aside>
+				</section>
+
+				<section data-auto-animate>
+					<div class="twocolumn">
+						<div>
+							<ul>
+								<li style="color:var(--astun-red)"><strong>Abstract</strong></li>
+								<li style="color:var(--astun-red)"><strong>Alternative Title</strong></li>
+								<li><del>Bounding Box</del></li>
+								<li><del>Constraints (usage and licensing)</del></li>
+								<li><del>Contact Details</del></li>
+								<li><del>Date</del></li>
+								<li style="color:var(--astun-red)"><strong>Extent Keyword</strong></li>
+								<li style="color:var(--astun-red)"><strong>Keywords (Controlled and Free Text)</strong></li>
+							</ul>
+						</div>
+						<div>
+							<ul>
+								<li><del>Lineage</del></li>
+								<li><del>Spatial Reference System</del></li>
+								<li><del>Resolution</del></li>
+								<li><del>Temporal Extent</del></li>
+								<li><del>Title</del></li>
+								<li style="color:var(--astun-red)"><strong>Topic Category (controlled)</strong></li>
+								<li><del>Update Frequency</del></li>
+							</ul>
+						</div>
+					</div>
+					<aside class="notes">The remaining elements were a blocker for clients but are now things we can now add with ML</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-orange)">How?</h3>
+					<img src="./images/SpaCy.png"/>
+					<aside class="notes">SpaCy is "industrial strength open source NLP in Python". Easy to pick up, actively developed and used, and well documented. We looked at other approaches but they weren't such a good fit.</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-indigo)">Geographic Keywords</h3>
+					<img src="./images/os_opennames.png"/>
+					<aside class="notes">
+						<p>This was the trickiest element to handle. Geoparsing is definitely a Thing, but generally not very fine-grained. We needed it to recognise UK roads, any sort of settlement, mountains, rivers, and postcodes</p>
+						<p>We built two custom pipelines- one that used NER trained on the OS Open Names dataset, and one that uses pattern recognition to pick up postcodes.</p>
+						<p>This approach was best for processing efficiency and can be run on a normal laptop</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-indigo)">Non-Geographic Keywords</h3>
+					<img class="fragment" src="./images/pytextrank.jpeg"/>
+					<img class="fragment" src="./images/keybert.png"/>
+					<img class="fragment" style="height:160px" src="./images/yake.png"/>
+					<aside class="notes">
+						<p>There are loads of options for this and we're not sure yet which approach gives consistently the best approach, so we're doing all of them</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-indigo)">INSPIRE Keywords and Topic Categories</h3>
+					<img style="height:400px" src="./images/ssdi.png"/>
+					<aside class="notes">
+						<p>These are controlled text fields so we're using text classification to pick the keywords/categories that best match the data. We built our own models trained on the metadata from ScotGov and EA</p>
+					</aside>
+				</section>
+
+				
+				<section>
+					<h3 class="box" style="background-color:var(--astun-indigo)">Everything Else</h3>
+					<img style="height:400px" src="./images/all_the_things.jpg"/>
+					<aside class="notes">
+						<p>Blame Ali for this, but we're using the GPT plugin for google sheets to generate the abstract, the human-readable title, and to pick the most popular results from all the other modules. We include a confidence score (which is a WIP)</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3 class="box" style="background-color:var(--astun-indigo)">How will this work IRL?</h3>
+					<p>🤔</p>
+					<aside class="notes">We currently generate spreadsheets for the clients to fill in these details manually, then we have a python script that updates the metadata records in GeoNetwork with the results. Instead of them filling things in, they will simply review these and correct glaring errors</aside>
+				</section>
+
+				<section>
+					<h3  class="box blink5" style="background-color:var(--astun-red)">Live Demo!!!</h3>
+					<img class="fragment" src="./images/bluepeter.png"/>
+					<aside class="notes">We did some of the prep work in advance to save time</aside>
+				</section>
+
+
+			</div>
+
+			<div class="fe-persistent-header">
+ 				<img src="./images/AstunSmallLogo.png"/>
+				<p style="color: var(--astun-red);font-weight:600">Experts in Place</p>
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				pdfMaxPagesPerSlide: 1,
+				pdfSeparateFragments: false,
+				slideNumber: "c/t",
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+			//Reveal.configure({ showNotes: 'separate-page' });
+
+		</script>
+
+	</body>
+</html>
